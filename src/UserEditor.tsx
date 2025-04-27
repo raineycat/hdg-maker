@@ -46,6 +46,26 @@ export function UserEditor(props: {data: CustomData, setData: Dispatch<SetStateA
         console.log("saved to localStorage")
     }
 
+    async function loadFromClipboard() {
+        try {
+            let text = await navigator.clipboard.readText()
+            props.setData(JSON.parse(text))
+        } catch(e) {
+            console.error("clipboard error", e)
+            alert("Failed to read from the clipboard!")
+        }
+    }
+
+    async function saveToClipboard() {
+        try {
+            let text = JSON.stringify(props.data)
+            await navigator.clipboard.writeText(text)
+        } catch(e) {
+            console.error("clipboard error", e)
+            alert("Failed to copy to the clipboard!")
+        }
+    }
+
     return <>
         <div>
             <h1>Edit your contract...</h1>
@@ -71,6 +91,12 @@ export function UserEditor(props: {data: CustomData, setData: Dispatch<SetStateA
                 )}
             </ul>
             <button onClick={() => updateTerms({...props.data, extraTerms: [...props.data.extraTerms, "New Term"]})}>Add...</button>
+
+            <h3>&nbsp;</h3>
+            <h3>Save/load:</h3>
+
+            <button onClick={saveToClipboard}>Copy to clipboard</button><br />
+            <button onClick={loadFromClipboard}>Load from clipboard</button><br />
         </div>
     </>
 }
