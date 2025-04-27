@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "tsc -b && vite build --base=/hdg-maker",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
