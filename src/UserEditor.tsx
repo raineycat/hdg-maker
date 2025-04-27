@@ -53,7 +53,7 @@ export function UserEditor(props: {data: CustomData, setData: Dispatch<SetStateA
             <input ref={affiniPronounsInput} placeholder="Pronouns (subj/obj)" value={props.data.affiniPronouns} onChange={updateInputs} />
 
             <h3>Your extra terms:</h3>
-            <ul>
+            <ul style={{listStyle: 'none'}}>
                 {props.data.extraTerms.map((term, idx) =>
                    <li>
                         <input value={term} onChange={e => props.setData({...props.data, extraTerms: [...props.data.extraTerms.map((orig, i) => i == idx ? e.target.value : orig)]})} />
