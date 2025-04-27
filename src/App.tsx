@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Contract from './Contract'
 import './App.css'
 import { UserEditor, CustomData } from './UserEditor'
@@ -23,6 +23,14 @@ export default function App() {
     ],
     extraTerms: []
   })
+
+  useEffect(() => {
+    let it = localStorage.getItem("hdgm-data")
+    if(it != null) {
+      console.log("Loading from localStorage")
+      setData(JSON.parse(it))
+    }
+  }, [])
 
   function toggleEditor() {
     console.log("toggle editor")

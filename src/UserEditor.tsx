@@ -22,7 +22,7 @@ export function UserEditor(props: {data: CustomData, setData: Dispatch<SetStateA
     const affiniPronounsInput = createRef<HTMLInputElement>()
 
     function updateInputs() {
-        console.log("Update inputs!", props.data)
+        // console.log("Update inputs!", props.data)
         props.setData({
             floretName: floretNameInput.current?.value ?? "",
             floretNumber: floretNumberInput.current?.value ?? "",
@@ -35,6 +35,15 @@ export function UserEditor(props: {data: CustomData, setData: Dispatch<SetStateA
             standardTerms: props.data.standardTerms,
             extraTerms: props.data.extraTerms
         })
+
+        localStorage.setItem("hdgm-data", JSON.stringify(props.data))
+        console.log("saved to localStorage")
+    }
+
+    function updateTerms(obj: CustomData) {
+        props.setData(obj)
+        localStorage.setItem("hdgm-data", JSON.stringify(props.data))
+        console.log("saved to localStorage")
     }
 
     return <>
@@ -56,12 +65,12 @@ export function UserEditor(props: {data: CustomData, setData: Dispatch<SetStateA
             <ul style={{listStyle: 'none'}}>
                 {props.data.extraTerms.map((term, idx) =>
                    <li>
-                        <input value={term} onChange={e => props.setData({...props.data, extraTerms: [...props.data.extraTerms.map((orig, i) => i == idx ? e.target.value : orig)]})} />
-                        <button onClick={() => props.setData({...props.data, extraTerms: [...props.data.extraTerms.filter((_, i) => i != idx)]})}>Remove</button>
+                        <input value={term} onChange={e => updateTerms({...props.data, extraTerms: [...props.data.extraTerms.map((orig, i) => i == idx ? e.target.value : orig)]})} />
+                        <button onClick={() => updateTerms({...props.data, extraTerms: [...props.data.extraTerms.filter((_, i) => i != idx)]})}>Remove</button>
                    </li> 
                 )}
             </ul>
-            <button onClick={() => props.setData({...props.data, extraTerms: [...props.data.extraTerms, "New Term"]})}>Add...</button>
+            <button onClick={() => updateTerms({...props.data, extraTerms: [...props.data.extraTerms, "New Term"]})}>Add...</button>
         </div>
     </>
 }
