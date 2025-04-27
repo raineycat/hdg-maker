@@ -1,0 +1,9 @@
+#root {
+  margin: 0;
+  text-align: center;
+}
+
+.flex-ctr {
+  display: flex;
+  justify-content: center;
+}
