@@ -19,3 +19,6 @@ You can use the following placeholders in your terms:
 - `{AFFINI_FULL}` - The full name of the Affini
 - `{AFFINI_PRONOUN_SBJ}` - The subjective pronoun of the Affini (e.g. She)
 - `{AFFINI_PRONOUN_OBJ}` - The objective pronoun of the Affini (e.g. Her)
+
+You can also add `:NAME` to the end of a placeholder to give it the striped background effect and cursive font, as if it were where a name was written in.
+> e.g. "You, `{FLORET_SHORT}:NAME`, etc etc"
