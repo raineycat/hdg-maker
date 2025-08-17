@@ -1,5 +1,6 @@
 import SignatureLine from './SignatureLine'
 import TermList from './TermList'
+import CompactLogo from './assets/compact_icon.webp'
 
 interface ComponentProps {
     floretName: string,
@@ -26,9 +27,9 @@ export default function Contract(props: ComponentProps) {
     return <>
         <div className='grid-outer'>
             <div className='contract-header'>
-                <img src="/compact_icon.webp" className='compact-icon' />
+                <img src={CompactLogo} className='compact-icon' />
                 <h3 className='contract-title'>HUMAN DOMESTICATION CONTRACT</h3>
-                <img src="/compact_icon.webp" className='compact-icon' />
+                <img src={CompactLogo} className='compact-icon' />
             </div>
 
             <div style={{gridRow: 2}}>
