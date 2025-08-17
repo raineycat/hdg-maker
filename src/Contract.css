@@ -22,6 +22,8 @@
 
     background-color: #fff5e9;
     color: #363344;
+
+    margin: 10px 0;
 }
 
 .term-row > td {
@@ -84,4 +86,23 @@
     aspect-ratio: 1/1;
     max-width: 20px;
     max-height: 20px;
+}
+
+.contract-header {
+    text-align: center;
+    grid-row: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contract-title {
+    margin: 10px 5px;
+    font-size: 40px;
+}
+
+.compact-icon {
+    aspect-ratio: 1/1;
+    height: 100%;  
 }
